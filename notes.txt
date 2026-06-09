@@ -20,7 +20,7 @@ sessionmaker =  database ke saath kaam karne ke liye temporary worker/session ba
     db.commit()
     db.refresh(new_user)
 
-----------------------------------------
+------------------------------------------------------------------------------------------------
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -31,4 +31,6 @@ class Setting(BaseSettings):
 setting = Setting()
 
 
--------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+Post method: -
+    post method ko execute karen ke liye get_db ko dependency injection ke through session create karte hai
