@@ -1,7 +1,13 @@
-model.py -> use to connect with database
+model.py -> use to define structure of table 
 router.py -> use to define the routes and endpoints
 dtos.py -> for data validation 
+controller.py -> main logic how data handling and all going on
 
+APPROACH TO DEFINE endpoints
+        define model.py
+        define cotroller.py
+        define routes,py
+        insert routes in main.py
 
 utils folder contain file which use in both "TASK" and "USER" i'e' work as a supporting file.
 
@@ -34,3 +40,56 @@ setting = Setting()
 -------------------------------------------------------------------------------------------------
 Post method: -
     post method ko execute karen ke liye get_db ko dependency injection ke through session create karte hai
+
+------------------------------------------
+
+Database Query:
+    task = db.query(TaskModel)
+        database me ek Query run karo jiska Model task hai aur uspe kuchh operation karne haimodel.py -> use to define structure of table 
+router.py -> use to define the routes and endpoints
+dtos.py -> for data validation 
+controller.py -> main logic how data handling and all going on
+
+APPROACH TO DEFINE endpoints
+        define model.py
+        define cotroller.py
+        define routes,py
+        insert routes in main.py
+
+utils folder contain file which use in both "TASK" and "USER" i'e' work as a supporting file.
+
+constant.py -> use to contain data that will never change
+
+sqlAlchemy -> this is ORM (Object Relational Mapper ) , use to map python code with database query
+
+-----------------------------------database configuration--------------------------------
+engine = database ka main connection system,
+    create_engine database ka gate open karta hai.
+    Without engine, SQLAlchemy ko pata hi nahi chalega ki database kaha hai.
+
+sessionmaker =  database ke saath kaam karne ke liye temporary worker/session banata hai.
+    db = sessionmaker()
+    db.add(new_user)
+    db.commit()
+    db.refresh(new_user)
+
+------------------------------------------------------------------------------------------------
+
+from pydantic_settings import BaseSettings, SettingsConfigDict
+
+class Setting(BaseSettings):
+    model_config = SettingsConfigDict(env_file = ".env",extra="ignore")
+    DB_CONNECTION : str
+
+setting = Setting()
+
+
+-------------------------------------------------------------------------------------------------
+Post method: -
+    post method ko execute karen ke liye get_db ko dependency injection ke through session create karte hai
+
+------------------------------------------
+
+Database Query:
+    task = db.query(TaskModel)
+        database me ek Query run karo jiska Model task hai aur uspe kuchh operation karne hai
